@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CargaController;
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\CamionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('Home');
+})->name('home');
+
+Route::get('/carga', [CargaController::class, 'index'])->name('carga.index');
+Route::get('/material', [MaterialController::class, 'index'])->name('material.index');
+Route::get('/camion', [CamionController::class, 'index'])->name('camion.index');
+
+Route::get('/buscarCamion', [CamionController::class, 'buscar'])->name('buscar');
+Route::get('/buscarMaterial', [MaterialController::class, 'buscar'])->name('buscarMaterial');
